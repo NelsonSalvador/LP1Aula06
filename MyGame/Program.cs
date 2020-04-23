@@ -8,6 +8,7 @@ namespace MyGame
         {
             int EnemyNr;
             Enemy[] enemies;
+            Random random = new Random();
 
             Console.Write("Insira nr de enimigos: ");
 
@@ -21,6 +22,15 @@ namespace MyGame
                 Console.Write($"Insira nome de enimigo: #{i}");
                 name = Console.ReadLine();
                 enemies[i] = new Enemy(name);
+
+                if (random.NextDouble() < 0.5)
+                {
+                    enemies[i].PickupPowerUp(PowerUp.Shield, 50);
+                }
+                else
+                {
+                    enemies[i].TakeDamage(random.Next(100));
+                }
             }
 
 
@@ -28,6 +38,8 @@ namespace MyGame
             {
                 Console.WriteLine(enemy.Getname());
             }
+
+            Console.WriteLine($"{enemy.GetName()} HP= {enemy.GetHealth()} Shield= {enemy.GetShield()}");
         }
     }
 }
