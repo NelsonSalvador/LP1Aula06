@@ -14,7 +14,7 @@ namespace MyGame
         }
         public Enemy(string name, float health, float shield)
         {
-            
+            SetName(name);
             this.health = health;
             this.shield = shield;
         }
